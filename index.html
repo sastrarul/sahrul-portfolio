@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAKA ANANDA — Video Editor &amp; Digital Creator</title>
+<meta name="description" content="Raka Ananda — Video editor, template creator CapCut, dan DaVinci Resolve enthusiast. Mengubah footage mentah jadi cerita yang nempel di kepala.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c4b5fd'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23g)' d='M16 2 L29 9 V23 L16 30 L3 23 V9 Z'/%3E%3Cpath fill='%2306040b' d='M13 11 L22 16 L13 21 Z'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ LOADING SCREEN ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-mark">
+    <svg viewBox="0 0 32 32" width="44" height="44">
+      <path fill="url(#loaderGrad)" d="M16 2 L29 9 V23 L16 30 L3 23 V9 Z"/>
+      <path fill="#06040b" d="M13 11 L22 16 L13 21 Z"/>
+      <defs>
+        <linearGradient id="loaderGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#c4b5fd"/>
+          <stop offset="1" stop-color="#7c3aed"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </div>
+  <div class="loader-label">MEMUAT KARYA</div>
+  <div class="loader-bar"><span id="loaderFill"></span></div>
+  <div class="loader-percent" id="loaderPercent">00%</div>
+</div>
+
+<!-- ============ BACKGROUND LAYERS ============ -->
+<canvas id="particles" aria-hidden="true"></canvas>
+<div class="bg-grid" aria-hidden="true"></div>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============ HEADER / NAV ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-wrap">
+    <a href="#home" class="brand">
+      <span class="brand-mark">RA</span>
+      <span class="brand-name">raka<span class="dim">.edits</span></span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active" data-nav>Beranda</a>
+      <a href="#about" class="nav-link" data-nav>Tentang</a>
+      <a href="#works" class="nav-link" data-nav>Karya</a>
+      <a href="#skills" class="nav-link" data-nav>Skill</a>
+      <a href="#testimonials" class="nav-link" data-nav>Testimoni</a>
+      <a href="#contact" class="nav-link" data-nav>Kontak</a>
+    </nav>
+
+    <a href="#works" class="btn btn-primary nav-cta">Lihat Karya <span class="arrow">→</span></a>
+
+    <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home" data-nav-mobile>Beranda</a>
+    <a href="#about" data-nav-mobile>Tentang</a>
+    <a href="#works" data-nav-mobile>Karya</a>
+    <a href="#skills" data-nav-mobile>Skill</a>
+    <a href="#testimonials" data-nav-mobile>Testimoni</a>
+    <a href="#contact" data-nav-mobile>Kontak</a>
+    <a href="#contact" class="btn btn-primary" data-nav-mobile>Mulai Kolaborasi →</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-glow hero-glow-a" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-b" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-copy reveal" data-reveal>
+      <p class="eyebrow"><span class="rec-dot"></span> VIDEO EDITOR &amp; CONTENT CREATOR</p>
+      <h1 class="hero-title">
+        <span class="line">Raka</span>
+        <span class="line gradient-text">Ananda.</span>
+      </h1>
+      <p class="hero-tagline">Mengubah footage mentah jadi cerita yang nempel di kepala — lewat potongan, warna, dan ritme yang pas.</p>
+
+      <div class="hero-actions">
+        <a href="#works" class="btn btn-primary">Lihat Karya <span class="arrow">→</span></a>
+        <a href="#about" class="btn btn-ghost">Tentang Saya</a>
+      </div>
+
+      <div class="hero-meta">
+        <span>↓ scroll untuk eksplorasi</span>
+        <span class="sep">/</span>
+        <span>terbuka untuk kolaborasi &amp; project freelance</span>
+      </div>
+    </div>
+
+    <div class="hero-preview glass reveal" data-reveal data-reveal-delay="150">
+      <div class="preview-head">
+        <span class="rec-tag"><span class="rec-dot"></span> PREVIEW</span>
+        <span class="preview-label">PROJECT_07.mov</span>
+        <span class="timecode" id="heroTimecode">00:00:00:00</span>
+      </div>
+
+      <div class="preview-screen">
+        <canvas id="previewCanvas"></canvas>
+        <button class="play-btn" id="playBtn" aria-label="Putar showreel">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg>
+        </button>
+        <span class="badge-render">
+          <svg viewBox="0 0 20 20" width="13" height="13"><path d="M8 13.5l-3.5-3.5 1.4-1.4L8 10.7l6.1-6.1L15.5 6 8 13.5z" fill="currentColor"/></svg>
+          Render 4K — Siap Ekspor
+        </span>
+      </div>
+
+      <div class="preview-timeline">
+        <div class="ruler">
+          <span>00:00</span><span>00:08</span><span>00:16</span><span>00:24</span>
+        </div>
+        <div class="tracks">
+          <div class="track"><i style="--w:30%;--c:#8b5cf6"></i><i style="--w:45%;--c:#c4b5fd"></i><i style="--w:25%;--c:#5b21b6"></i></div>
+          <div class="track"><i style="--w:55%;--c:#a855f7"></i><i style="--w:45%;--c:#7c3aed"></i></div>
+          <div class="track"><i style="--w:20%;--c:#c4b5fd"></i><i style="--w:35%;--c:#8b5cf6"></i><i style="--w:45%;--c:#5b21b6"></i></div>
+        </div>
+        <div class="playhead" id="playhead"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>CAPCUT</span><i>●</i><span>DAVINCI RESOLVE</span><i>●</i><span>COLOR GRADING</span><i>●</i><span>MOTION DESIGN</span><i>●</i><span>SOUND DESIGN</span><i>●</i><span>CONTENT STRATEGY</span><i>●</i>
+      <span>CAPCUT</span><i>●</i><span>DAVINCI RESOLVE</span><i>●</i><span>COLOR GRADING</span><i>●</i><span>MOTION DESIGN</span><i>●</i><span>SOUND DESIGN</span><i>●</i><span>CONTENT STRATEGY</span><i>●</i>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="section-inner about-grid">
+    <div class="about-copy reveal" data-reveal>
+      <p class="eyebrow">— PERJALANAN</p>
+      <h2 class="section-title">Dari hobi edit video di kamar kos, jadi rutinitas ribuan jam render.</h2>
+      <p class="body-text">Semua berawal dari rasa penasaran: kenapa video orang lain terasa beda? Dari situ saya belajar otodidak — bongkar pasang transisi di CapCut, lalu pindah ke DaVinci Resolve untuk ngulik color grading yang lebih dalam. Tidak ada jalan pintas, hanya jam terbang dan rasa tidak puas yang sehat.</p>
+      <p class="body-text">Sekarang, fokus saya ada di tiga hal: membantu brand dan kreator lain bercerita lewat visual, membangun template CapCut yang dipakai ribuan editor pemula, dan merawat komunitas kecil yang saling tukar ilmu render.</p>
+
+      <div class="about-chips">
+        <div class="chip"><span class="chip-num">5+</span><span class="chip-label">Tahun di balik timeline</span></div>
+        <div class="chip"><span class="chip-num">3,200+</span><span class="chip-label">Jam render dihabiskan</span></div>
+        <div class="chip"><span class="chip-num">∞</span><span class="chip-label">Cup kopi yang menemani</span></div>
+      </div>
+    </div>
+
+    <div class="about-visual reveal" data-reveal data-reveal-delay="150">
+      <div class="id-card glass">
+        <div class="id-lanyard"></div>
+        <div class="id-top">
+          <span>ALL ACCESS</span>
+          <span>2026</span>
+        </div>
+        <div class="id-photo" aria-hidden="true">
+          <svg viewBox="0 0 100 100"><circle cx="50" cy="38" r="20" fill="rgba(196,165,255,.25)"/><path d="M15 92c5-22 22-32 35-32s30 10 35 32" fill="rgba(196,165,255,.18)"/></svg>
+        </div>
+        <div class="id-info">
+          <strong>Raka Ananda</strong>
+          <span>Video Editor / Creator</span>
+        </div>
+        <div class="id-strip">RAKA.EDITS — STUDIO PASS — RAKA.EDITS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED WORKS ============ -->
+<section class="works" id="works">
+  <div class="section-inner">
+    <div class="section-head reveal" data-reveal>
+      <p class="eyebrow">— KARYA PILIHAN</p>
+      <h2 class="section-title">Project yang paling banyak bercerita.</h2>
+      <p class="body-text muted">Sebagian kecil dari template, edit komersial, dan konten kreator yang pernah digarap.</p>
+    </div>
+
+    <div class="works-grid">
+
+      <article class="work-card reveal" data-reveal
+        data-title="CapCut Template — Cinematic Travel Pack"
+        data-category="Template CapCut"
+        data-duration="0:32"
+        data-desc="Pack 12 template transisi sinematik untuk konten travel, dipakai lebih dari 40.000 editor. Fokus pada match-cut dan speed-ramp yang halus."
+        data-tags="CapCut, Transisi, Travel">
+        <div class="work-thumb" style="--c1:#8b5cf6;--c2:#2a1454">
+          <span class="work-tag">Template CapCut</span>
+          <span class="work-duration">0:32</span>
+          <div class="work-play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+        </div>
+        <div class="work-info">
+          <h3>Cinematic Travel Pack</h3>
+          <p>Template CapCut · 12 preset transisi</p>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-reveal
+        data-title="Color Grading — Short Film 'Senja'"
+        data-category="DaVinci Resolve"
+        data-duration="4:18"
+        data-desc="Color grading penuh untuk short film indie, membangun mood hangat-melankolis lewat node-based grading di DaVinci Resolve."
+        data-tags="DaVinci Resolve, Color Grading, Short Film">
+        <div class="work-thumb" style="--c1:#a855f7;--c2:#1a0b2e">
+          <span class="work-tag">DaVinci Resolve</span>
+          <span class="work-duration">4:18</span>
+          <div class="work-play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+        </div>
+        <div class="work-info">
+          <h3>Short Film &ldquo;Senja&rdquo;</h3>
+          <p>Color Grading · Mood hangat-melankolis</p>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-reveal
+        data-title="Brand Reels — Kopi Kala Senja"
+        data-category="Content Creator"
+        data-duration="0:45"
+        data-desc="Seri konten reels untuk brand kopi lokal, menggabungkan cinematic b-roll dengan caption dinamis untuk meningkatkan watch-time."
+        data-tags="Content Strategy, Reels, Brand">
+        <div class="work-thumb" style="--c1:#7c3aed;--c2:#150726">
+          <span class="work-tag">Content Creator</span>
+          <span class="work-duration">0:45</span>
+          <div class="work-play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+        </div>
+        <div class="work-info">
+          <h3>Kopi Kala Senja</h3>
+          <p>Brand Reels · Seri 6 konten</p>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-reveal
+        data-title="CapCut Template — Glitch Type Pack"
+        data-category="Template CapCut"
+        data-duration="0:21"
+        data-desc="Template teks bergaya glitch &amp; kinetic typography untuk konten edukasi dan motivasi, ringan dipakai di HP."
+        data-tags="CapCut, Motion Text, Template">
+        <div class="work-thumb" style="--c1:#c4b5fd;--c2:#241046">
+          <span class="work-tag">Template CapCut</span>
+          <span class="work-duration">0:21</span>
+          <div class="work-play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+        </div>
+        <div class="work-info">
+          <h3>Glitch Type Pack</h3>
+          <p>Template CapCut · Kinetic typography</p>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-reveal
+        data-title="Music Video Edit — 'Lintas Waktu'"
+        data-category="DaVinci Resolve"
+        data-duration="3:02"
+        data-desc="Editing penuh music video indie pop, sinkronisasi cut ke beat dan grading kontras tinggi bernuansa neon-violet."
+        data-tags="DaVinci Resolve, Music Video, Editing">
+        <div class="work-thumb" style="--c1:#9333ea;--c2:#190a30">
+          <span class="work-tag">DaVinci Resolve</span>
+          <span class="work-duration">3:02</span>
+          <div class="work-play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+        </div>
+        <div class="work-info">
+          <h3>&ldquo;Lintas Waktu&rdquo; MV</h3>
+          <p>Music Video · Full editing &amp; grading</p>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-reveal
+        data-title="Community Workshop Recap"
+        data-category="Content Creator"
+        data-duration="1:10"
+        data-desc="Recap event workshop komunitas editor — menyatukan puluhan klip HP jadi satu video yang terasa rapi dan personal."
+        data-tags="Content Strategy, Komunitas, Recap">
+        <div class="work-thumb" style="--c1:#6d28d9;--c2:#120821">
+          <span class="work-tag">Content Creator</span>
+          <span class="work-duration">1:10</span>
+          <div class="work-play"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+        </div>
+        <div class="work-info">
+          <h3>Community Workshop Recap</h3>
+          <p>Event Recap · Multi-klip editing</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section class="skills" id="skills">
+  <div class="section-inner">
+    <div class="section-head reveal" data-reveal>
+      <p class="eyebrow">— TOOLS &amp; KEAHLIAN</p>
+      <h2 class="section-title">Alat yang dipakai tiap hari, bukan sekadar dipajang.</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-card glass reveal" data-reveal data-level="92">
+        <div class="skill-icon" style="--c:#8b5cf6">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 3l14 9-14 9V3z" fill="currentColor"/></svg>
+        </div>
+        <h3>CapCut</h3>
+        <p>Template, transisi, dan motion text untuk konten mobile-first.</p>
+        <div class="skill-bar"><span style="--lvl:92%"></span></div>
+        <span class="skill-percent">92%</span>
+      </div>
+
+      <div class="skill-card glass reveal" data-reveal data-level="88">
+        <div class="skill-icon" style="--c:#a855f7">
+          <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        </div>
+        <h3>DaVinci Resolve</h3>
+        <p>Color grading node-based dan editing naratif tingkat lanjut.</p>
+        <div class="skill-bar"><span style="--lvl:88%"></span></div>
+        <span class="skill-percent">88%</span>
+      </div>
+
+      <div class="skill-card glass reveal" data-reveal data-level="80">
+        <div class="skill-icon" style="--c:#c4b5fd">
+          <svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 13l3 3 5-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Canva</h3>
+        <p>Desain thumbnail, cover, dan visual pendukung yang cepat &amp; konsisten.</p>
+        <div class="skill-bar"><span style="--lvl:80%"></span></div>
+        <span class="skill-percent">80%</span>
+      </div>
+
+      <div class="skill-card glass reveal" data-reveal data-level="85">
+        <div class="skill-icon" style="--c:#7c3aed">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path d="M4 19V9M12 19V5M20 19v-7" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </div>
+        <h3>Content Strategy</h3>
+        <p>Riset hook, ritme storytelling, dan perencanaan konten jangka panjang.</p>
+        <div class="skill-bar"><span style="--lvl:85%"></span></div>
+        <span class="skill-percent">85%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATISTICS ============ -->
+<section class="stats" id="stats">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-card glass reveal" data-reveal>
+        <p class="stat-eyebrow">TOTAL</p>
+        <p class="stat-number"><span data-count="25" data-suffix="M+">0</span></p>
+        <p class="stat-label">Total Views dari seluruh konten &amp; template</p>
+      </div>
+      <div class="stat-card glass reveal" data-reveal data-reveal-delay="80">
+        <p class="stat-eyebrow">SELESAI</p>
+        <p class="stat-number"><span data-count="180" data-suffix="+">0</span></p>
+        <p class="stat-label">Project editing &amp; template yang dirilis</p>
+      </div>
+      <div class="stat-card glass reveal" data-reveal data-reveal-delay="160">
+        <p class="stat-eyebrow">KOMUNITAS</p>
+        <p class="stat-number"><span data-count="12" data-suffix="K+">0</span></p>
+        <p class="stat-label">Member di komunitas editor &amp; kreator</p>
+      </div>
+      <div class="stat-card glass reveal" data-reveal data-reveal-delay="240">
+        <p class="stat-eyebrow">RENDER</p>
+        <p class="stat-number"><span data-count="3200" data-suffix="+">0</span></p>
+        <p class="stat-label">Jam konten yang sudah diedit</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-head reveal" data-reveal>
+      <p class="eyebrow">— TESTIMONI</p>
+      <h2 class="section-title">Kata mereka yang pernah berkolaborasi.</h2>
+    </div>
+
+    <div class="carousel glass reveal" data-reveal>
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="testi-slide">
+          <p class="testi-quote">&ldquo;Template CapCut dari Raka itu plug-and-play banget — hemat waktu editing saya sampai setengahnya tiap minggu.&rdquo;</p>
+          <div class="testi-person"><span class="testi-avatar">DR</span><div><strong>Dina Rahmawati</strong><span>Content Manager, Kopi Kala Senja</span></div></div>
+        </div>
+
+        <div class="testi-slide">
+          <p class="testi-quote">&ldquo;Color grading-nya bikin short film kami terasa jauh lebih mahal dari budget aslinya. Detail tone-nya konsisten dari awal sampai akhir.&rdquo;</p>
+          <div class="testi-person"><span class="testi-avatar">FH</span><div><strong>Faisal Hidayat</strong><span>Sutradara Independen</span></div></div>
+        </div>
+
+        <div class="testi-slide">
+          <p class="testi-quote">&ldquo;Komunitas yang dibangun Raka beda — bukan cuma grup share file, tapi tempat belajar render &amp; storytelling bareng.&rdquo;</p>
+          <div class="testi-person"><span class="testi-avatar">SN</span><div><strong>Sinta Nuraini</strong><span>Video Editor Pemula</span></div></div>
+        </div>
+
+        <div class="testi-slide">
+          <p class="testi-quote">&ldquo;Responsif, jelas dalam revisi, dan selalu kasih opsi kreatif yang nggak kepikiran sebelumnya.&rdquo;</p>
+          <div class="testi-person"><span class="testi-avatar">AP</span><div><strong>Andra Pratama</strong><span>Brand Manager</span></div></div>
+        </div>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-arrow" id="carouselPrev" aria-label="Testimoni sebelumnya">‹</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-arrow" id="carouselNext" aria-label="Testimoni berikutnya">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="section-inner contact-grid">
+    <div class="contact-copy reveal" data-reveal>
+      <p class="eyebrow">— MARI KOLABORASI</p>
+      <h2 class="section-title">Punya project? Ayo bikin sesuatu yang diingat orang.</h2>
+      <p class="body-text muted">Isi form di samping, atau langsung kirim email. Biasanya saya balas dalam 1–2 hari kerja.</p>
+
+      <a class="contact-email" href="mailto:hello@raka.edits">hello@raka.edits</a>
+
+      <div class="social-row">
+        <a href="#" class="social-pill" aria-label="Instagram">Instagram</a>
+        <a href="#" class="social-pill" aria-label="TikTok">TikTok</a>
+        <a href="#" class="social-pill" aria-label="YouTube">YouTube</a>
+        <a href="#" class="social-pill" aria-label="Behance">Behance</a>
+      </div>
+    </div>
+
+    <form class="contact-form glass reveal" data-reveal data-reveal-delay="150" id="contactForm" novalidate>
+      <div class="field">
+        <label for="cf-name">Nama</label>
+        <input type="text" id="cf-name" name="name" placeholder="Nama lengkap kamu" required>
+      </div>
+      <div class="field">
+        <label for="cf-email">Email</label>
+        <input type="email" id="cf-email" name="email" placeholder="kamu@email.com" required>
+      </div>
+      <div class="field">
+        <label for="cf-message">Pesan</label>
+        <textarea id="cf-message" name="message" rows="4" placeholder="Ceritakan project kamu..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary form-submit" id="formSubmit">
+        <span class="btn-text">Kirim Pesan</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark">RA</span>
+      <span class="brand-name">raka<span class="dim">.edits</span></span>
+    </a>
+    <p class="footer-copy">© 2026 Raka Ananda. Dibuat dengan kopi &amp; banyak render ulang.</p>
+    <button class="back-to-top" id="backToTop" aria-label="Kembali ke atas">↑</button>
+  </div>
+</footer>
+
+<!-- ============ WORK MODAL ============ -->
+<div class="modal-overlay" id="workModal" aria-hidden="true">
+  <div class="modal-box glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Tutup">✕</button>
+    <div class="modal-thumb" id="modalThumb">
+      <div class="modal-play"><svg viewBox="0 0 24 24" width="26" height="26"><path d="M7 4l13 8-13 8V4z" fill="currentColor"/></svg></div>
+      <span class="modal-duration" id="modalDuration"></span>
+    </div>
+    <div class="modal-body">
+      <span class="modal-category" id="modalCategory"></span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <div class="modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
